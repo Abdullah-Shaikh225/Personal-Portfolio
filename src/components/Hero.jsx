@@ -164,7 +164,7 @@ export default function Hero() {
                     </motion.div>
                 </div>
 
-                {/* Profile Photo Element */}
+                {/* Profile Photo Elements */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9, x: 30 }}
                     animate={{ opacity: 1, scale: 1, x: 0 }}
