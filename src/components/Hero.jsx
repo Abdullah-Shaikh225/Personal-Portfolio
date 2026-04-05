@@ -5,11 +5,13 @@ import { supabase } from '../lib/supabase';
 
 const roles = ['Full Stack Developer', 'AI Builder', 'Computer Engineer'];
 
+const DEFAULT_IMAGE = "https://lh3.googleusercontent.com/aida-public/AB6AXuA0xCm7uHmXLD-pCs-tyUUrAdeuDf3bYEbZ-R9L2C2iZBzZvGw_TrwwAI9r9VNQvYLiK5R3NhsJuqlPPduOLfKY2Ewpg8FMKLEfyo-C5eNJJdqLh6MJMzEko2b9tetyLEc0w4bMDBdJIRDnvIgVFlMzH8YgbgYvsNoJZRYSOu122okcprYNWBgQsCbXeld6kALlQ4aXzdky8ryjs6IjkbJFDg71Jef6oMBpk_LDxHCbR3mWt-gXRCS4TW612t4e6a7w29FcpLqRkV0";
+
 export default function Hero() {
     const [roleIndex, setRoleIndex] = useState(0);
     const [text, setText] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
-    const [profileImage, setProfileImage] = useState("https://lh3.googleusercontent.com/aida-public/AB6AXuA0xCm7uHmXLD-pCs-tyUUrAdeuDf3bYEbZ-R9L2C2iZBzZvGw_TrwwAI9r9VNQvYLiK5R3NhsJuqlPPduOLfKY2Ewpg8FMKLEfyo-C5eNJJdqLh6MJMzEko2b9tetyLEc0w4bMDBdJIRDnvIgVFlMzH8YgbgYvsNoJZRYSOu122okcprYNWBgQsCbXeld6kALlQ4aXzdky8ryjs6IjkbJFDg71Jef6oMBpk_LDxHCbR3mWt-gXRCS4TW612t4e6a7w29FcpLqRkV0");
+    const [profileImage, setProfileImage] = useState(null);
 
     const tick = useCallback(() => {
         const currentRole = roles[roleIndex];
@@ -43,7 +45,11 @@ export default function Hero() {
                 .eq('email', 'system@portfolio.local')
                 .eq('name', 'SITE_PROFILE_IMAGE')
                 .single();
-            if (data && data.message) setProfileImage(data.message);
+            if (data && data.message) {
+                setProfileImage(data.message);
+            } else {
+                setProfileImage(DEFAULT_IMAGE);
+            }
         };
         fetchImage();
     }, []);
@@ -172,9 +178,9 @@ export default function Hero() {
                         {/* High-quality bordered glass container */}
                         <div className="relative w-full h-full rounded-[2.5rem] border border-white/40 shadow-2xl overflow-hidden glass-card p-3 transform transition-transform hover:-rotate-1 hover:scale-[1.02] duration-500">
                             <img
-                                src={profileImage}
+                                src={profileImage || "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"}
                                 alt="Abdullah Shaikh"
-                                className="w-full h-full object-cover rounded-[1.8rem] contrast-[1.05]"
+                                className={`w-full h-full object-cover rounded-[1.8rem] contrast-[1.05] transition-opacity duration-300 ${profileImage ? 'opacity-100' : 'opacity-0'}`}
                             />
 
                             {/* Small floating tech badge overlapping */}
