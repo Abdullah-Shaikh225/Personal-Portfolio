@@ -42,7 +42,7 @@ export default function AdminLogin({ onLogin }) {
                 .update({ current_otp: generatedOtp, otp_expiry: expiry })
                 .eq('id', data.id);
 
-            // Send OTP to Telegram seamlessly
+            // Send OTP to Telegram seamlesslys
             const botToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
             const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
 
