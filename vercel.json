@@ -1,5 +1,14 @@
 {
+    "cleanUrls": true,
     "rewrites": [
+        {
+            "source": "/portfolio",
+            "destination": "/portfolio.html"
+        },
+        {
+            "source": "/portfolio/:path*",
+            "destination": "/portfolio.html"
+        },
         {
             "source": "/((?!.*\\.).*)",
             "destination": "/index.html"

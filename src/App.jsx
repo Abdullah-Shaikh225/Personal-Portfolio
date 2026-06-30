@@ -43,7 +43,11 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Portfolio />} />
+      <Route path="/portfolio" element={<Portfolio />} />
+      <Route path="/portfolio.html" element={<Portfolio />} />
       <Route path="/abdullah-admin-2025" element={<AdminPanel />} />
+      <Route path="/portfolio/abdullah-admin-2025" element={<AdminPanel />} />
+      <Route path="/portfolio.html/abdullah-admin-2025" element={<AdminPanel />} />
     </Routes>
   );
 }

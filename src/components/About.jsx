@@ -82,7 +82,7 @@ export default function About() {
                                         </span>
                                     </div>
                                     <h4 className="font-bold">Software Development Intern</h4>
-                                    <p className="text-primary font-medium text-sm mb-2">Baloxa Media, Mumbai</p>
+                                    <p className="text-primary font-medium text-sm mb-2">Renwik Media, Mumbai</p>
                                     <ul className="text-text-light text-sm leading-relaxed space-y-1.5">
                                         <li className="flex gap-2">
                                             <span className="text-primary mt-1">▸</span>
